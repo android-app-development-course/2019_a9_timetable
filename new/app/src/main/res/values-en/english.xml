@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<resources>
+    <string name="app_name">TimeTable</string>
+    <string name="timetable">Timetable</string>
+    <string name="homework">Homework</string>
+    <string name="input_homework">Press to add homework reminders!</string>
+    <string name="me">Me</string>
+    <string name="monday">monday</string>
+    <string name="tuesday">tuesday</string>
+    <string name="wednesday">wednesday</string>
+    <string name="thursday">thursday</string>
+    <string name="friday">friday</string>
+    <string name="saturday">saturday</string>
+    <string name="sunday">sunday</string>
+    <string name="class_name">class name</string>
+    <string name="classroom">classroom</string>
+    <string name="week">week</string>
+    <string name="class_time">class_time</string>
+    <string name="teacher">teacher</string>
+    <string name="add_another_time">add_another_time</string>
+    <string name="month">Month</string>
+    <string name="save">Save</string>
+    <string name="back">Return</string>
+    <string name="add">+</string>
+    <string name="instruction">Input correct website!</string>
+    <string name="open">Open the website</string>
+    <string name="job_name">Job name </string>
+    <string name="job_content">Job content </string>
+    <string name="deadline">Deadline</string>
+</resources>
