@@ -2,9 +2,9 @@
 <shape xmlns:android="http://schemas.android.com/apk/res/android"
     >
 <!-- 背景色 -->
-<solid android:state_pressed="true" android:color="#FFF6F6F6"/>
+<solid android:state_pressed="true" android:color="#FFFfFfFf"/>
 
 <!-- 边框色 -->
-<stroke android:state_pressed="true" android:width="0.5dip" android:color="#0F0F0F" />
+<stroke android:state_pressed="true" android:width="0.5dip" android:color="#00FFFFFF" />
 
 </shape>

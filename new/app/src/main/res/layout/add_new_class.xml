@@ -63,17 +63,19 @@
         >
 
         <EditText
+            android:id="@+id/classname"
             android:layout_width="match_parent"
             android:layout_height="60dp"
-            android:id="@+id/classname"
-            android:text="@string/class_name"
-            android:layout_marginBottom="20dp"
-            android:background="@drawable/setbar_bg_opacity"
             android:layout_marginTop="20dp"
-            />
+            android:layout_marginBottom="20dp"
+            android:paddingLeft="10dp"
+            android:background="@drawable/setbar_bg_opacity"
+            android:text="@string/class_name"
+             />
         <EditText
             android:layout_width="match_parent"
             android:layout_height="60dp"
+            android:paddingLeft="10dp"
             android:id="@+id/classroom"
             android:text="@string/classroom"
             android:background="@drawable/setbar_bg_opacity"
@@ -83,11 +85,13 @@
             android:layout_height="60dp"
             android:id="@+id/week"
             android:text="@string/week"
+            android:paddingLeft="10dp"
             android:background="@drawable/setbar_bg_opacity"
             />
         <EditText
             android:layout_width="match_parent"
             android:layout_height="60dp"
+            android:paddingLeft="10dp"
             android:id="@+id/class_time"
             android:text="@string/class_time"
             android:background="@drawable/setbar_bg_opacity"
@@ -95,6 +99,7 @@
         <EditText
             android:layout_width="match_parent"
             android:layout_height="60dp"
+            android:paddingLeft="10dp"
             android:id="@+id/teacher"
             android:text="@string/teacher"
             android:layout_marginBottom="20dp"
@@ -106,7 +111,9 @@
             style="@android:style/Widget.Button.Inset"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@drawable/setbar_bg"
+            android:background="@drawable/setbar_bg_blue"
+            android:layout_marginRight="10dp"
+            android:layout_marginLeft="10dp"
             android:gravity="center"
             android:text="@string/add_another_time"
             android:textColor="#03A9F4"

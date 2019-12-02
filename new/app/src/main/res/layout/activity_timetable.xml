@@ -13,108 +13,15 @@
         android:src="@drawable/p5"
         android:scaleType="fitXY"
         />
-    <!--<FrameLayout-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="match_parent"-->
-        <!--app:layout_constraintTop_toTopOf="parent"-->
-        <!--app:layout_constraintLeft_toLeftOf="parent"-->
-        <!--app:layout_constraintRight_toRightOf="parent"-->
-        <!--app:layout_constraintBottom_toBottomOf="parent"-->
-        <!--&gt;-->
+    <!--粘贴的代码-->
 
-        <!--<android.support.v4.view.ViewPager-->
-            <!--android:id="@+id/vp"-->
-            <!--android:layout_width="match_parent"-->
-            <!--android:layout_height="match_parent"-->
-            <!--/>-->
+    <android.support.v4.view.ViewPager
+        android:id="@+id/vp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        />
+<!--粘贴的代码-->
 
-        <!--<LinearLayout-->
-            <!--android:layout_width="match_parent"-->
-            <!--android:layout_height="match_parent"-->
-            <!--android:orientation="vertical"-->
-            <!--android:layout_gravity="bottom"-->
-            <!--android:gravity="center"-->
-            <!--android:background="#33000000"-->
-            <!--&gt;-->
-
-            <!--&lt;!&ndash;<TextView&ndash;&gt;-->
-                <!--&lt;!&ndash;android:id="@+id/tv_test_title"&ndash;&gt;-->
-                <!--&lt;!&ndash;android:layout_width="wrap_content"&ndash;&gt;-->
-                <!--&lt;!&ndash;android:layout_height="wrap_content"&ndash;&gt;-->
-                <!--&lt;!&ndash;android:text="图片标题"&ndash;&gt;-->
-                <!--&lt;!&ndash;android:textColor="@android:color/white"&ndash;&gt;-->
-                <!--&lt;!&ndash;/>&ndash;&gt;-->
-
-            <!--&lt;!&ndash;<LinearLayout&ndash;&gt;-->
-                <!--&lt;!&ndash;android:layout_width="wrap_content"&ndash;&gt;-->
-                <!--&lt;!&ndash;android:layout_height="wrap_content"&ndash;&gt;-->
-                <!--&lt;!&ndash;android:orientation="horizontal"&ndash;&gt;-->
-                <!--&lt;!&ndash;android:layout_marginTop="3dip"&ndash;&gt;-->
-                <!--&lt;!&ndash;&gt;&ndash;&gt;-->
-
-                <!--<View-->
-                    <!--android:id="@+id/dot_0"-->
-                    <!--android:layout_width="match_parent"-->
-                    <!--android:layout_height="fill_parent"-->
-                    <!--android:layout_marginLeft="2dip"-->
-                    <!--android:layout_marginRight="2dip"-->
-                    <!--android:background="@drawable/p1"-->
-                    <!--/>-->
-                <!--<View-->
-                    <!--android:id="@+id/dot_1"-->
-                    <!--android:layout_width="match_parent"-->
-                    <!--android:layout_height="fill_parent"-->
-                    <!--android:layout_marginLeft="2dip"-->
-                    <!--android:layout_marginRight="2dip"-->
-                    <!--android:background="@drawable/p2"-->
-                    <!--/>-->
-                <!--<View-->
-                    <!--android:id="@+id/dot_2"-->
-                    <!--android:layout_width="match_parent"-->
-                    <!--android:layout_height="fill_parent"-->
-                    <!--android:layout_marginLeft="2dip"-->
-                    <!--android:layout_marginRight="2dip"-->
-                    <!--android:background="@drawable/p3"-->
-                    <!--/>-->
-                <!--<View-->
-                    <!--android:id="@+id/dot_3"-->
-                    <!--android:layout_width="match_parent"-->
-                    <!--android:layout_height="fill_parent"-->
-                    <!--android:layout_marginLeft="2dip"-->
-                    <!--android:layout_marginRight="2dip"-->
-                    <!--android:background="@drawable/p4"-->
-                    <!--/>-->
-                <!--<View-->
-                    <!--android:id="@+id/dot_4"-->
-                    <!--android:layout_width="match_parent"-->
-                    <!--android:layout_height="fill_parent"-->
-                    <!--android:layout_marginLeft="2dip"-->
-                    <!--android:layout_marginRight="2dip"-->
-                    <!--android:background="@drawable/p5"-->
-                    <!--/>-->
-                <!--<View-->
-                    <!--android:id="@+id/dot_5"-->
-                    <!--android:layout_width="match_parent"-->
-                    <!--android:layout_height="fill_parent"-->
-                    <!--android:layout_marginLeft="2dip"-->
-                    <!--android:layout_marginRight="2dip"-->
-                    <!--android:background="@drawable/p6"-->
-                    <!--/>-->
-
-
-            <!--</LinearLayout>-->
-
-
-        <!--&lt;!&ndash;</LinearLayout>&ndash;&gt;-->
-
-    <!--</FrameLayout>-->
-
-    <!--<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"-->
-        <!--xmlns:app="http://schemas.android.com/apk/res-auto"-->
-        <!--xmlns:tools="http://schemas.android.com/tools"-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="match_parent"-->
-        <!--tools:context=".MainActivity">-->
 
 
     <RelativeLayout
@@ -146,7 +53,7 @@
             <Button
                 android:id="@+id/btn_state"
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
+                android:layout_height="50dp"
                 android:layout_weight="5"
                 android:background="@drawable/setbar_bg_white"
                 android:text="@string/app_name" />
@@ -154,7 +61,7 @@
             <Button
                 android:id="@+id/btn_add"
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
+                android:layout_height="50dp"
                 android:layout_weight="1"
                 android:background="@drawable/setbar_bg_white"
                 android:text="@string/add"
@@ -180,8 +87,7 @@
                 android:layout_weight="0.75"
                 android:background="@drawable/setbar_bg_opacity"
                 android:text="@string/month"
-                android:textSize="8sp"
-                />
+                android:textSize="10sp" />
 
             <Button
                 android:id="@+id/btn_monday"
@@ -192,7 +98,8 @@
                 android:layout_weight="1"
                 android:background="@drawable/setbar_bg_opacity"
                 android:text="@string/monday"
-                android:textSize="8sp" />
+                android:textSize="12sp" />
+
             <Button
                 android:id="@+id/btn_tuesday"
                 android:layout_width="0dp"
@@ -200,8 +107,8 @@
                 android:layout_weight="1"
                 android:background="@drawable/setbar_bg_opacity"
                 android:text="@string/tuesday"
-                android:textSize="8sp"
-                />
+                android:textSize="12sp" />
+
             <Button
                 android:id="@+id/btn_wednesday"
                 android:layout_width="0dp"
@@ -209,8 +116,8 @@
                 android:layout_weight="1"
                 android:background="@drawable/setbar_bg_opacity"
                 android:text="@string/wednesday"
-                android:textSize="8sp"
-                />
+                android:textSize="12sp" />
+
             <Button
                 android:id="@+id/btn_thursday"
                 android:layout_width="0dp"
@@ -218,19 +125,17 @@
                 android:layout_weight="1"
                 android:background="@drawable/setbar_bg_opacity"
                 android:text="@string/thursday"
-                android:textSize="8sp"
-                />
+                android:textSize="12sp" />
 
             <Button
                 android:id="@+id/btn_friday"
                 android:layout_width="0dp"
                 android:layout_height="55dp"
-
                 android:layout_weight="1"
                 android:background="@drawable/setbar_bg_opacity"
                 android:text="@string/friday"
-                android:textSize="8sp"
-                />
+                android:textSize="12sp" />
+
             <Button
                 android:id="@+id/btn_saturday"
                 android:layout_width="0dp"
@@ -238,8 +143,8 @@
                 android:layout_weight="1"
                 android:background="@drawable/setbar_bg_opacity"
                 android:text="@string/saturday"
-                android:textSize="8sp"
-                />
+                android:textSize="12sp" />
+
             <Button
                 android:id="@+id/btn_sunday"
                 android:layout_width="0dp"
@@ -247,8 +152,7 @@
                 android:layout_weight="1"
                 android:background="@drawable/setbar_bg_opacity"
                 android:text="@string/sunday"
-                android:textSize="8sp"
-                />
+                android:textSize="12sp" />
         </LinearLayout>
 
         <ScrollView
@@ -419,7 +323,8 @@
                 android:layout_height="55dp"
                 android:layout_weight="0.75"
                 android:background="@drawable/setbar_bg_opacity"
-                android:text="3" />
+                android:text="3"
+                 />
             <Button
                 android:id="@+id/btn_three1"
                 android:layout_width="0dp"
