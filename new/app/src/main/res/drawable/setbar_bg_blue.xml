@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <?xml version="1.0" encoding="utf-8"?>
 <layer-list xmlns:android="http://schemas.android.com/apk/res/android">
     <!-- 连框颜色值 --><item>
@@ -22,3 +23,56 @@
         </shape>
     </item>
 </layer-list>
+=======
+<<<<<<< HEAD
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- 连框颜色值 --><item>
+    <shape>
+        <solid android:color="#FF03A9F4" />
+        <corners android:radius="20dp" /> //圆角
+        <padding android:bottom="1.5dp"
+            android:left="1.5dp"
+            android:right="1.5dp"
+            android:top="1.5dp" />
+    </shape>
+</item>
+    <!-- 主体背景颜色值 -->
+    <item android:bottom="0.5dp" android:right="0.5dp" android:left="0.5dp" android:top="0.5dp">
+        <shape>
+            <solid android:color="#FFFFFF" />
+            <corners android:radius="20dp" /> //圆角
+            <padding android:bottom="10dp"
+            android:left="10dp"
+            android:right="10dp"
+            android:top="10dp" />
+        </shape>
+    </item>
+</layer-list>
+=======
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- 连框颜色值 --><item>
+    <shape>
+        <solid android:color="#FF03A9F4" />
+        <corners android:radius="20dp" /> //圆角
+        <padding android:bottom="1.5dp"
+            android:left="1.5dp"
+            android:right="1.5dp"
+            android:top="1.5dp" />
+    </shape>
+</item>
+    <!-- 主体背景颜色值 -->
+    <item android:bottom="0.5dp" android:right="0.5dp" android:left="0.5dp" android:top="0.5dp">
+        <shape>
+            <solid android:color="#FFFFFF" />
+            <corners android:radius="20dp" /> //圆角
+            <padding android:bottom="10dp"
+            android:left="10dp"
+            android:right="10dp"
+            android:top="10dp" />
+        </shape>
+    </item>
+</layer-list>
+>>>>>>> 实现了一些动效和功能
+>>>>>>> add some animation

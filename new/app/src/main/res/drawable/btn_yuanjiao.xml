@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <?xml version="1.0" encoding="utf-8"?>
 <shape xmlns:android="http://schemas.android.com/apk/res/android">
         <corners android:radius="30dp" /> //圆角
@@ -6,3 +7,24 @@
 
 
 
+=======
+<<<<<<< HEAD
+<?xml version="1.0" encoding="utf-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android">
+        <corners android:radius="30dp" /> //圆角
+        <solid android:color="#B2FFFFFF" /> //背景颜色
+</shape>
+
+
+
+=======
+<?xml version="1.0" encoding="utf-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android">
+        <corners android:radius="30dp" /> //圆角
+        <solid android:color="#B2FFFFFF" /> //背景颜色
+</shape>
+
+
+
+>>>>>>> 实现了一些动效和功能
+>>>>>>> add some animation
