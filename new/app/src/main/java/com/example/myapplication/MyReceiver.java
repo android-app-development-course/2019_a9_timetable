@@ -11,11 +11,13 @@ import android.database.sqlite.SQLiteDatabase;
 import android.os.Build;
 import android.support.v4.app.NotificationCompat;
 
-//import androidx.core.app.NotificationCompat;
-
 import java.util.Calendar;
 
 import static android.content.Context.NOTIFICATION_SERVICE;
+
+//import android.support.v4.app.NotificationCompat;
+
+//import androidx.core.app.NotificationCompat;
 
 public class MyReceiver extends BroadcastReceiver {
     int year,month,day,hour,minute;

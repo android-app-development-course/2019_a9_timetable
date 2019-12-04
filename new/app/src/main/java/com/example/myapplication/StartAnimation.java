@@ -16,6 +16,7 @@ import android.widget.Button;
 public class StartAnimation extends AppCompatActivity implements View.OnClickListener {
     int width;
     int height;
+    CountDownTimer countDownTimer;
     Button btn;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,7 +24,7 @@ public class StartAnimation extends AppCompatActivity implements View.OnClickLis
         setContentView(R.layout.activity_start_animation);
         btn=(Button)findViewById(R.id.btn);
         btn.setOnClickListener(this);
-        new CountDownTimer(6000, 1000) {
+       countDownTimer= new CountDownTimer(6000, 1000) {
             @Override
             public void onTick(long millisUntilFinished) {
 
@@ -94,7 +95,10 @@ public class StartAnimation extends AppCompatActivity implements View.OnClickLis
 
     @Override
     public void onClick(View view) {
+        countDownTimer.cancel();
         Intent intent=new Intent(this,MainActivity.class);
         startActivity(intent);
+        overridePendingTransition(R.anim.zoomin, R.anim.zoomout);
+
     }
 }

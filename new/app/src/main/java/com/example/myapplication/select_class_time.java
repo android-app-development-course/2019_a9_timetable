@@ -18,8 +18,6 @@ import android.widget.NumberPicker;
 import android.widget.TextView;
 
 
-
-
 public class select_class_time extends DialogFragment implements NumberPicker.OnValueChangeListener, View.OnClickListener {
     //Button classnum;
     View view,view1;

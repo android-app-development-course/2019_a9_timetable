@@ -6,7 +6,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 public class MyHelper extends SQLiteOpenHelper{
 public MyHelper(Context context){
-    super(context,"itcast69.db",null,1);
+    super(context,"itcast79.db",null,1);
 }
     @Override
     public void onCreate(SQLiteDatabase db) {

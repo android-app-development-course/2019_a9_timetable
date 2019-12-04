@@ -1,99 +1,3 @@
-<<<<<<< HEAD
-package com.example.myapplication;
-
-import android.content.Intent;
-import android.os.Bundle;
-import android.support.design.widget.BottomNavigationView;
-import android.support.v7.app.AppCompatActivity;
-import android.support.annotation.NonNull;
-import android.view.MenuItem;
-import android.widget.TextView;
-
-public class MainActivity extends AppCompatActivity {
-    private TextView mTextMessage;
-
-    private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
-            = new BottomNavigationView.OnNavigationItemSelectedListener() {
-
-        @Override
-        public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-            switch (item.getItemId()) {
-                case R.id.navigation_home:
-//                    mTextMessage.setText(R.string.timetable);
-                    Intent intent=new Intent(MainActivity.this,MainActivity.class);
-                    startActivity(intent);
-                    break;
-                case R.id.navigation_dashboard:
-                    Intent intent1=new Intent(MainActivity.this,homework.class);
-                    startActivity(intent1);
-                    break;
-//                case R.id.navigation_notifications:
-//                    mTextMessage.setText(R.string.title_notifications);
-//                    return true;
-            }
-            return false;
-        }
-    };
-
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_timetable);
-        BottomNavigationView navView = findViewById(R.id.nav_view);
-        mTextMessage = findViewById(R.id.message);
-        navView.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
-    }
-
-}
-=======
-<<<<<<< HEAD
-package com.example.myapplication;
-
-import android.content.Intent;
-import android.os.Bundle;
-import android.support.design.widget.BottomNavigationView;
-import android.support.v7.app.AppCompatActivity;
-import android.support.annotation.NonNull;
-import android.view.MenuItem;
-import android.widget.TextView;
-
-public class MainActivity extends AppCompatActivity {
-    private TextView mTextMessage;
-
-    private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
-            = new BottomNavigationView.OnNavigationItemSelectedListener() {
-
-        @Override
-        public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-            switch (item.getItemId()) {
-                case R.id.navigation_home:
-//                    mTextMessage.setText(R.string.timetable);
-                    Intent intent=new Intent(MainActivity.this,MainActivity.class);
-                    startActivity(intent);
-                    break;
-                case R.id.navigation_dashboard:
-                    Intent intent1=new Intent(MainActivity.this,homework.class);
-                    startActivity(intent1);
-                    break;
-//                case R.id.navigation_notifications:
-//                    mTextMessage.setText(R.string.title_notifications);
-//                    return true;
-            }
-            return false;
-        }
-    };
-
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_timetable);
-        BottomNavigationView navView = findViewById(R.id.nav_view);
-        mTextMessage = findViewById(R.id.message);
-        navView.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
-    }
-
-}
-=======
 package com.example.myapplication;
 
 import android.annotation.SuppressLint;
@@ -112,16 +16,14 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.SystemClock;
 import android.provider.Settings;
-import android.support.annotation.RequiresApi;
+import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.NotificationManagerCompat;
 import android.support.v7.app.AppCompatActivity;
-import android.support.annotation.NonNull;
 import android.util.DisplayMetrics;
 import android.view.Gravity;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.Window;
 import android.widget.Button;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -132,21 +34,24 @@ import com.example.explosionfield.ExplosionField;
 import java.util.Calendar;
 import java.util.TimeZone;
 
-public class MainActivity extends AppCompatActivity implements View.OnClickListener{
+public class MainActivity extends AppCompatActivity implements View.OnClickListener {
     private TextView mTextMessage;
     static  String week[],color[],time[];
     int[]width;
+    Button autoAdd;
     static Button b;
     Button temp;
-    Button fun,autoadd;
+    Button fun;
     int num;
     //   static Button newbtn;
-   private ExplosionField mExplosionField;
+    private ExplosionField mExplosionField;
 
     static RelativeLayout relativeLayout;
     static int aveWidth,aveHeight;
     static MyHelper myHelper;
     static Context context;
+    //static String project;
+//static String start;
     public void cancel(){
         Intent intent = new Intent(MainActivity.this, MyReceiver.class);
         PendingIntent sender = PendingIntent.getBroadcast(MainActivity.this, 0, intent, 0);
@@ -213,8 +118,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             btn2.setBackground(context.getResources().getDrawable(R.drawable.btn_background));
 
             btn2.setTextColor(Color.parseColor("#000000"));
-            btn2.setText(cursor.getString(1).substring(cursor.getString(1).indexOf(":")+1)+" "+cursor.getString(6).substring(cursor.getString(6).indexOf(":")));
-
+            btn2.setText(cursor.getString(1).substring(cursor.getString(1).indexOf(":")+1)+"\n"+cursor.getString(6).substring(cursor.getString(6).indexOf(":")+1));
             relativeLayout.addView(btn2);
             ++num;
         }
@@ -244,24 +148,24 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }
     };
 
-    //@RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-       // requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_timetable);
-        mExplosionField = ExplosionField.attach2Window(this);
         BottomNavigationView navView = findViewById(R.id.nav_view);
         mTextMessage = findViewById(R.id.message);
         navView.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
+        mExplosionField = ExplosionField.attach2Window(this);
+autoAdd=(Button)findViewById(R.id.btn_add);
+autoAdd.setOnClickListener(this);
+        //addListener(findViewById(R.id.week1));
+//        loading l=new loading();
+//        l.show(getFragmentManager(),"3");
         context=MainActivity.this;
         temp=null;
         num=0;
         fun=(Button)findViewById(R.id.btn_scan);
         fun.setOnClickListener(this);
-        autoadd=(Button)findViewById(R.id.btn_add);
-        autoadd.setOnClickListener(this);
         myHelper=new MyHelper(this);
         color=new String[]{"#ADADAD","#FF0000","#BE77FF","#80FFFF","#79FF79","#FF5809","#7AFEC6","FFFF6F"};
         week=new String[]{"周一","周二","周三","周四","周五","周六","周日"};
@@ -277,12 +181,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         aveHeight=height/10;
         relativeLayout=(RelativeLayout)findViewById(R.id.week1);
         init();
-update();
-//Notice();
-
+        update();
     }
-
-    //@RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
     public static void init(){
         //    RelativeLayout relativeLayout=(RelativeLayout)findViewById(R.id.week1);
         for(int i = 1; i <= 12; i ++){
@@ -290,10 +190,10 @@ update();
                 Button tx = new Button(context);
                 tx.setId((i - 1) * 8  + j);
                 if(j==1) {
-                    tx.setText(time[i - 1]);
                     tx.setBackground(context.getResources().getDrawable(R.drawable.setbar_bg_opacity));
-                }
-                else tx.setBackgroundColor(Color.parseColor("#00000000"));
+                    tx.setText(time[i - 1]);
+                }else
+                tx.setBackgroundColor(Color.parseColor("#00000000"));
                 //除了最后一列，都使用course_text_view_bg背景（最后一列没有右边框）
                 //相对布局参数
                 RelativeLayout.LayoutParams rp = new RelativeLayout.LayoutParams(
@@ -315,15 +215,15 @@ update();
                 tx.setOnClickListener((View.OnClickListener) context);
                 relativeLayout.addView(tx);			}		}
     }
-
-
     @SuppressLint("ResourceType")
     @Override
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.btn_add:
-                Intent intent=new Intent(MainActivity.this,AutoAddClass.class);;
+                Intent intent=new Intent(MainActivity.this,AutoAddClass.class);
                 startActivity(intent);
+                overridePendingTransition(R.anim.zoomin, R.anim.zoomout);
+
                 break;
             case R.id.btn_scan:
                 // num= readFile();
@@ -427,8 +327,8 @@ update();
                 break;
             default:
                 b = (Button) findViewById(view.getId());
-                //   Toast.makeText(this,b.getId()+"",Toast.LENGTH_SHORT).show();
                 if((b.getId()-1)%8!=0) {
+                    //   Toast.makeText(this,b.getId()+"",Toast.LENGTH_SHORT).show();
                     if (temp != null && temp != b) {
                         temp.setBackgroundColor(Color.parseColor("#00000000"));
                         b.setBackground(getResources().getDrawable(R.drawable.c));
@@ -455,5 +355,3 @@ update();
         }
     }
 }
->>>>>>> 实现了一些动效和功能
->>>>>>> add some animation
