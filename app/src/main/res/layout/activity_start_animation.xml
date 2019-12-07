@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="#ffffff"
+    android:id="@+id/loading"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".StartAnimation">
+    <Button
+        android:layout_alignParentRight="true"
+        android:id="@+id/btn"
+        android:background="@drawable/btn1"
+        android:layout_width="100dp"
+        android:layout_height="30dp"
+        android:padding="6dp"></Button>
+    <ImageView
+        android:id="@+id/loading1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:src="@drawable/loading1"></ImageView>
+    <ImageView
+        android:id="@+id/loading3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/loading3"></ImageView>
+    <ImageView
+        android:id="@+id/loading2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/loading2"></ImageView>
+    <com.example.myapplication.PathTextView
+        android:id="@+id/PathEffectTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:layout_centerHorizontal="true"
+        ></com.example.myapplication.PathTextView>
+</RelativeLayout>
