@@ -23,7 +23,7 @@
     <string name="add">+</string>
     <string name="instruction">Input correct website!</string>
     <string name="open">Open the website</string>
-    <string name="job_name">Job name </string>
+    <string name="job_name">Job name: </string>
     <string name="job_content">Job content </string>
-    <string name="deadline">Deadline</string>
+    <string name="deadline">Deadline:</string>
 </resources>

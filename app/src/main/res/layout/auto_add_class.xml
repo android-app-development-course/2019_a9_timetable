@@ -55,15 +55,16 @@
             android:textStyle="bold" />
     </LinearLayout>
 
-    <LinearLayout
+    <RelativeLayout
         android:id="@+id/lay_step"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
         app:layout_constraintTop_toBottomOf="@id/lay_state"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="50dp"
+        android:layout_marginRight="50dp"
+        android:layout_marginLeft="50dp"
         >
 
         <Button
@@ -71,8 +72,7 @@
             style="@android:style/Widget.DeviceDefault.Button.Inset"
             android:layout_width="50dp"
             android:layout_height="50dp"
-            android:layout_marginLeft="30dp"
-            android:layout_marginRight="50dp"
+        android:layout_alignParentLeft="true"
             android:text="1"
             android:textColor="#ffffff"
             android:background="@drawable/btn_circle"
@@ -82,87 +82,61 @@
             android:id="@+id/two"
             android:layout_width="50dp"
             android:layout_height="50dp"
-            android:layout_marginLeft="50dp"
-            android:layout_marginRight="50dp"
-            android:text="2"
+           android:text="2"
             android:textColor="#ffffff"
-            android:background="@drawable/btn_circle_grave"
+            android:background="@drawable/btn_circle"
             />
         <Button
             android:id="@+id/three"
             android:layout_width="50dp"
             android:layout_height="50dp"
-            android:layout_marginLeft="50dp"
-            android:layout_marginRight="25dp"
-            android:text="3"
+          android:layout_alignParentRight="true"
+             android:text="3"
             android:textColor="#ffffff"
-            android:background="@drawable/btn_circle_grave"
+            android:background="@drawable/btn_circle"
             />
-    </LinearLayout>
 
-    <android.support.constraint.ConstraintLayout
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:id="@+id/lay_step1"
-        android:padding="10dp"
+
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/tv_instruction"
+        android:layout_width="wrap_content"
+        android:layout_height="50dp"
+        android:text="@string/instruction"
+        android:gravity="fill_vertical"
+        android:textColor="#000000"
+        android:textSize="20dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@id/lay_step"
-        app:layout_constraintBottom_toBottomOf="parent">
-
-        <TextView
-            android:id="@+id/tv_instruction"
-            android:layout_width="wrap_content"
-            android:layout_height="50dp"
-            android:text="@string/instruction"
-            android:gravity="fill_vertical"
-            android:textColor="#000000"
-            android:textSize="20dp"
-            android:paddingTop="10dp"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toTopOf="@id/et_website"
-            />
+        app:layout_constraintBottom_toTopOf="@id/et_website"
+        />
 
         <EditText
             android:id="@+id/et_website"
             android:layout_width="match_parent"
             android:layout_height="50dp"
-            android:paddingTop="10dp"
-            android:background="@drawable/setbar_bg_blue"
-            android:text="http://jwc.scnu.edu.cn"
             app:layout_constraintTop_toBottomOf="@id/tv_instruction"
+            android:background="@drawable/setbar_bg_blue"
             />
 
 
-        <Button
-            android:id="@+id/btn_open"
-            style="@android:style/Widget.Holo.Light.Button.Inset"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="30dp"
-            android:layout_marginRight="30dp"
-            android:layout_marginTop="35dp"
-            android:background="@drawable/setbar_bg_blue"
-            android:text="@string/open"
-            android:textColor="#03A9F4"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/et_website" />
-    </android.support.constraint.ConstraintLayout>
-
-    <android.support.constraint.ConstraintLayout
+    <Button
+        android:id="@+id/bt_open"
+        style="@android:style/Widget.Holo.Light.Button.Inset"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:id="@+id/lay_step2"
-        android:visibility="invisible"
-        app:layout_constraintTop_toBottomOf="@+id/lay_step"
-        app:layout_constraintBottom_toBottomOf="parent">
-        <WebView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:id="@+id/web">
-        </WebView>
-    </android.support.constraint.ConstraintLayout>
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:layout_marginTop="35dp"
+        android:background="@drawable/setbar_bg_blue"
+        android:text="@string/open"
+        android:textColor="#03A9F4"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/et_website" />
+
 
 </android.support.constraint.ConstraintLayout>

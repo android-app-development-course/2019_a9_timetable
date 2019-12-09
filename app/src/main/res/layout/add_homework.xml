@@ -21,10 +21,7 @@
         app:layout_constraintRight_toRightOf="parent"
         android:layout_marginTop="0dp"
         android:orientation="horizontal"
-
         >
-
-
         <Button
             android:id="@+id/btn_return"
             android:layout_width="0dp"
@@ -32,9 +29,7 @@
             android:layout_weight="1"
             android:text="@string/back"
             android:background="@drawable/setbar_bg_white"
-
             />
-
         <Button
             android:id="@+id/btn_add_class"
             android:layout_width="0dp"
@@ -43,7 +38,6 @@
             android:background="@drawable/setbar_bg_white"
             android:text="@string/app_name"
             />
-
         <Button
             android:id="@+id/btn_save"
             android:layout_width="0dp"
@@ -61,46 +55,91 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         >
+<LinearLayout
+    android:layout_marginTop="10dp"
+    android:background="@drawable/setbar_bg_opacity"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="60dp">
+    <TextView
+        android:paddingLeft="10dp"
+       android:layout_width="wrap_content"
+        android:layout_height="60dp"
+        android:text="@string/class_name"
+       android:background="#00000000"
+      />
 
-        <EditText
+    <EditText
+        android:id="@+id/classname"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:background="#00000000"
+
+        android:paddingLeft="10dp" />
+</LinearLayout>
+        <LinearLayout
+            android:layout_marginTop="20dp"
+            android:background="@drawable/setbar_bg_opacity"
             android:layout_width="match_parent"
             android:layout_height="60dp"
-            android:id="@+id/classname"
-            android:text="@string/class_name"
-            android:layout_marginBottom="20dp"
+            android:orientation="horizontal">
+            <TextView
+                android:paddingLeft="10dp"
+                 android:layout_width="wrap_content"
+                android:layout_height="60dp"
+                android:text="@string/job_name"
+                android:background="#00000000"
+               android:gravity="left|center_vertical"
+                />
+
+            <EditText
+                android:id="@+id/jobname"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:background="#00000000"
+
+                android:paddingLeft="10dp" />
+        </LinearLayout>
+        <LinearLayout
             android:background="@drawable/setbar_bg_opacity"
-            android:layout_marginTop="10dp"
-            android:paddingLeft="10dp"
-            />
-        <EditText
             android:layout_width="match_parent"
             android:layout_height="60dp"
-            android:id="@+id/classroom"
-            android:text="@string/job_name"
-            android:background="@drawable/setbar_bg_opacity"
-            android:paddingLeft="10dp"
+            android:orientation="horizontal">
+            <TextView
+                android:paddingLeft="10dp"
+                android:layout_width="wrap_content"
+               android:layout_height="60dp"
+                android:text="@string/deadline"
+                android:background="#00000000"
+                />
 
-            />
-        <EditText
+            <Button
+                android:id="@+id/deadline"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:background="#00000000"
+                android:gravity="left|center_vertical"
+                android:paddingLeft="10dp" />
+        </LinearLayout>
+        <TextView
+           android:layout_marginTop="10dp"
+            android:gravity="center_vertical|center_horizontal"
             android:layout_width="match_parent"
-            android:layout_height="60dp"
-            android:id="@+id/class_time"
-            android:text="@string/deadline"
-            android:background="@drawable/setbar_bg_opacity"
-            android:layout_marginBottom="10dp"
-            android:paddingLeft="10dp"
-            />
-
-
+            android:layout_height="40dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:background="@drawable/content_title"
+            android:text="@string/job_content" />
         <EditText
-            android:layout_width="390dp"
+            android:id="@+id/content"
+            android:paddingLeft="10dp"
+            android:gravity="top|left"
+            android:layout_width="match_parent"
             android:layout_height="200dp"
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
-            android:paddingLeft="140dp"
-            android:paddingBottom="170dp"
-            android:background="@drawable/setbar_bg_blue_opacity"
-            android:text="@string/job_content" />
+           android:background="@drawable/content"
+           />
 
 
 

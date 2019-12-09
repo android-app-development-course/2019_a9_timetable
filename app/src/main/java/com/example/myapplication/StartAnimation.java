@@ -37,7 +37,10 @@ public class StartAnimation extends AppCompatActivity implements View.OnClickLis
             @Override
             public void onFinish() {
                 Intent intent=new Intent(StartAnimation.this,MainActivity.class);
+                finish();
                 startActivity(intent);
+                overridePendingTransition(R.anim.zoomin, R.anim.zoomout);
+
             }
         }.start();
         DisplayMetrics dm = new DisplayMetrics();
@@ -112,6 +115,7 @@ public class StartAnimation extends AppCompatActivity implements View.OnClickLis
     public void onClick(View view) {
         countDownTimer.cancel();
         Intent intent=new Intent(this,MainActivity.class);
+        finish();
         startActivity(intent);
         overridePendingTransition(R.anim.zoomin, R.anim.zoomout);
 

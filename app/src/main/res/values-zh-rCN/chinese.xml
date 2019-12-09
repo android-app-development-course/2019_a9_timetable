@@ -24,7 +24,7 @@
     <string name="add">+</string>
     <string name="instruction">输入正确的教务网址！</string>
     <string name="open">打开教务系统</string>
-    <string name="job_name">作业名称</string>
+    <string name="job_name">作业名称:</string>
     <string name="job_content">作业内容</string>
-    <string name="deadline">截止时间</string>
+    <string name="deadline">截止时间:</string>
 </resources>

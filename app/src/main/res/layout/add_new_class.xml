@@ -32,9 +32,7 @@
             android:layout_weight="1"
             android:text="@string/back"
             android:background="@drawable/setbar_bg_white"
-
             />
-
         <Button
             android:id="@+id/btn_add_class"
             android:layout_width="0dp"
@@ -43,7 +41,6 @@
             android:background="@drawable/setbar_bg_white"
             android:text="@string/app_name"
             />
-
         <Button
             android:id="@+id/btn_save"
             android:layout_width="0dp"
@@ -61,52 +58,110 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         >
-
-        <EditText
-            android:id="@+id/classname"
-            android:layout_width="match_parent"
-            android:layout_height="60dp"
+        <LinearLayout
             android:layout_marginTop="20dp"
             android:layout_marginBottom="20dp"
-            android:paddingLeft="10dp"
             android:background="@drawable/setbar_bg_opacity"
-            android:text="@string/class_name"
-             />
-        <EditText
             android:layout_width="match_parent"
-            android:layout_height="60dp"
-            android:paddingLeft="10dp"
-            android:id="@+id/classroom"
-            android:text="@string/classroom"
-            android:background="@drawable/setbar_bg_opacity"
-            />
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="60dp"
-            android:id="@+id/week"
-            android:text="@string/week"
-            android:paddingLeft="10dp"
-            android:background="@drawable/setbar_bg_opacity"
-            />
-        <Button
-            android:layout_width="match_parent"
-            android:layout_height="60dp"
-            android:paddingLeft="10dp"
-            android:gravity="left|center_vertical"
-            android:id="@+id/class_time"
-            android:text="@string/class_time"
-            android:background="@drawable/setbar_bg_opacity"
-            />
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="60dp"
-            android:paddingLeft="10dp"
-            android:id="@+id/teacher"
-            android:text="@string/teacher"
-            android:layout_marginBottom="20dp"
-            android:background="@drawable/setbar_bg_opacity"
-            />
+            android:orientation="horizontal"
+            android:layout_height="wrap_content">
+            <TextView
+                android:background="#00000000"
+                android:layout_width="wrap_content"
+                android:layout_height="60dp"
+                android:paddingLeft="10dp"
+                android:text="@string/class_name"
+                ></TextView>
 
+            <EditText
+                android:id="@+id/classname"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:background="#00000000"
+                android:paddingLeft="10dp" />
+        </LinearLayout>
+    <LinearLayout
+     android:background="@drawable/setbar_bg_opacity"
+        android:layout_width="match_parent"
+        android:orientation="horizontal"
+        android:layout_height="wrap_content">
+        <TextView
+            android:background="#00000000"
+            android:layout_width="wrap_content"
+            android:layout_height="60dp"
+            android:paddingLeft="10dp"
+            android:text="@string/classroom"
+            ></TextView>
+
+        <EditText
+            android:id="@+id/classroom"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:background="#00000000"
+            android:paddingLeft="10dp" />
+    </LinearLayout>
+    <LinearLayout
+        android:background="@drawable/setbar_bg_opacity"
+        android:layout_width="match_parent"
+        android:orientation="horizontal"
+        android:layout_height="wrap_content">
+        <TextView
+            android:background="#00000000"
+            android:layout_width="wrap_content"
+            android:layout_height="60dp"
+            android:paddingLeft="10dp"
+            android:text="@string/week"
+            ></TextView>
+
+        <EditText
+            android:id="@+id/week"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:background="#00000000"
+            android:paddingLeft="10dp" />
+    </LinearLayout>
+    <LinearLayout
+        android:background="@drawable/setbar_bg_opacity"
+        android:layout_width="match_parent"
+        android:orientation="horizontal"
+        android:layout_height="wrap_content">
+        <TextView
+            android:background="#00000000"
+            android:layout_width="wrap_content"
+            android:layout_height="60dp"
+            android:paddingLeft="10dp"
+            android:text="@string/class_time"
+            ></TextView>
+        <Button
+            android:gravity="left|center_vertical"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:paddingLeft="10dp"
+            android:id="@+id/class_time"
+            android:background="#00000000"
+            />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_marginBottom="20dp"
+        android:background="@drawable/setbar_bg_opacity"
+        android:layout_width="match_parent"
+        android:orientation="horizontal"
+        android:layout_height="wrap_content">
+        <TextView
+            android:background="#00000000"
+            android:layout_width="wrap_content"
+            android:layout_height="60dp"
+            android:paddingLeft="10dp"
+            android:text="@string/teacher"
+            ></TextView>
+
+        <EditText
+            android:id="@+id/teacher"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:background="#00000000"
+             android:paddingLeft="10dp" />
+    </LinearLayout>
         <Button
             android:id="@+id/add_another_time"
             style="@android:style/Widget.Button.Inset"

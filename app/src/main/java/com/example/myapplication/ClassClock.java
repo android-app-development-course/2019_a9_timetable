@@ -1,14 +1,19 @@
 package com.example.myapplication;
 
+import android.app.AlarmManager;
 import android.app.Notification;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
+import android.app.PendingIntent;
+import android.app.Service;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Build;
+import android.os.SystemClock;
+import android.os.Vibrator;
 import android.support.v4.app.NotificationCompat;
 
 import java.util.Calendar;
@@ -19,7 +24,7 @@ import static android.content.Context.NOTIFICATION_SERVICE;
 
 //import androidx.core.app.NotificationCompat;
 
-public class MyReceiver extends BroadcastReceiver {
+public class ClassClock extends BroadcastReceiver {
     int year,month,day,hour,minute;
     String week;
     int starthour[],startminute[];
@@ -58,16 +63,26 @@ public class MyReceiver extends BroadcastReceiver {
     }
     @Override
     public void onReceive(final Context context, Intent intent) {
+        Intent intent1 = new Intent(context,ClassClock.class);
+        PendingIntent sender = PendingIntent.getBroadcast(context, 0, intent1, 0);
+        AlarmManager manager = (AlarmManager)context.getSystemService(context.ALARM_SERVICE);
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            manager.setExactAndAllowWhileIdle(AlarmManager.ELAPSED_REALTIME_WAKEUP, SystemClock.elapsedRealtime() + 1000*60*60, sender);
+        }
+        else if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+            manager.setExact(AlarmManager.ELAPSED_REALTIME_WAKEUP, SystemClock.elapsedRealtime() + 1000*60*60, sender);
+        }
         String message=null;
+        Vibrator vibrator = (Vibrator) context.getSystemService(Service.VIBRATOR_SERVICE);
+
         starthour=new int[]{8,9,10,11,14,15,16,17,19,19,20,21};
         startminute=new int[]{30,20,20,10,30,20,10,0,0,50,40,30};
 getDate();
-       // Toast.makeText(context,Create.project,Toast.LENGTH_SHORT).show();
+
         SQLiteDatabase db=new MyHelper(context).getReadableDatabase();
-      //  Toast.makeText(context,"111",Toast.LENGTH_SHORT).show();
 
         Cursor cursor=db.query("information",null,null,null,null,null,null);
-////Toast.makeText(context,"dd",Toast.LENGTH_SHORT).show();
         if(cursor.getCount()==0)return;
         int num=1;
         while(cursor.moveToNext()){
@@ -84,7 +99,6 @@ if(message!=null) {
     String id = "my_channel_01";
     String name = "我是渠道名字";
     NotificationManager notificationManager = (NotificationManager) context.getSystemService(NOTIFICATION_SERVICE);
-
     Notification notification = null;
     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
         NotificationChannel mChannel = new NotificationChannel(id, name, NotificationManager.IMPORTANCE_LOW);
@@ -104,7 +118,10 @@ if(message!=null) {
                 .setChannelId(id);//无效
         notification = notificationBuilder.build();
     }
+    vibrator.vibrate( 2500);//比较常用
+
     notificationManager.notify(111123, notification);
 }
-    }
+
+   }
 }
