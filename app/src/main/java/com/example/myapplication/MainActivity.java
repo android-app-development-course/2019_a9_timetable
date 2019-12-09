@@ -240,7 +240,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         switch (view.getId()) {
             case R.id.btn_add:
                 Intent intent=new Intent(MainActivity.this,AutoAddClass.class);
-                finish();
+                finish();   //主界面不用结束
                 startActivity(intent);
                 overridePendingTransition(R.anim.zoomin, R.anim.zoomout);
 

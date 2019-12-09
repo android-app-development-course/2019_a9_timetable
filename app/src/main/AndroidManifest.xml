@@ -3,6 +3,7 @@
     package="com.example.myapplication">
 
     <uses-permission android:name="android.permission.VIBRATE" />
+    <uses-permission android:name="android.permission.INTERNET"/>
 
     <application
         android:allowBackup="true"
@@ -10,12 +11,19 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
+        android:theme="@style/AppTheme"
+        android:usesCleartextTraffic="true">
         <activity android:name=".timeable"></activity>
         <activity android:name=".ClassDetail" />
         <activity android:name=".HomeworkDetail" />
         <activity android:name=".MainActivity" />
-        <activity android:name=".AutoAddClass" />
+        <activity android:name=".AutoAddClass">
+            <intent-filter>
+                <action android:name="android.intent.action.INTERNET" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
         <activity android:name=".AddNewClass" />
         <activity android:name=".AddHomework" />
         <activity

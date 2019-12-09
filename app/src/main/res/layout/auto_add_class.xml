@@ -13,7 +13,7 @@
         android:scaleType="fitXY"
         android:src="@drawable/p1"
         tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="0dp" />
+        tools:layout_editor_absoluteY="0dp"/>
     <LinearLayout
         android:id="@+id/lay_state"
         android:layout_width="match_parent"
@@ -21,122 +21,133 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-
         android:layout_marginTop="0dp"
-        android:orientation="horizontal"
-        >
-
+        android:orientation="horizontal">
 
         <Button
-            android:id="@+id/btn_scan"
+            android:id="@+id/btn_return"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="@string/back"
             android:background="@drawable/setbar_bg_white"
-            />
-
+            android:textStyle="bold"/>
         <Button
             android:id="@+id/btn_state"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="5"
             android:background="@drawable/setbar_bg_white"
-            android:text="@string/app_name"
-            />
-
+            android:text="@string/app_name"/>
         <Button
-            android:id="@+id/btn_add"
+            android:id="@+id/btn_save"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:background="@drawable/setbar_bg_white"
             android:text="@string/save"
-            android:textStyle="bold" />
+            android:textStyle="bold"/>
     </LinearLayout>
 
-    <RelativeLayout
+    <LinearLayout
         android:id="@+id/lay_step"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:orientation="horizontal"
         app:layout_constraintTop_toBottomOf="@id/lay_state"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        android:layout_marginTop="50dp"
-        android:layout_marginRight="50dp"
-        android:layout_marginLeft="50dp"
-        >
+        android:layout_marginTop="10dp">
 
         <Button
             android:id="@+id/one"
             style="@android:style/Widget.DeviceDefault.Button.Inset"
             android:layout_width="50dp"
             android:layout_height="50dp"
-        android:layout_alignParentLeft="true"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="50dp"
             android:text="1"
             android:textColor="#ffffff"
-            android:background="@drawable/btn_circle"
-            />
-
+            android:background="@drawable/btn_circle" />
         <Button
             android:id="@+id/two"
             android:layout_width="50dp"
             android:layout_height="50dp"
-           android:text="2"
+            android:layout_marginLeft="50dp"
+            android:layout_marginRight="50dp"
+            android:text="2"
             android:textColor="#ffffff"
-            android:background="@drawable/btn_circle"
-            />
+            android:background="@drawable/btn_circle_grave" />
         <Button
             android:id="@+id/three"
             android:layout_width="50dp"
             android:layout_height="50dp"
-          android:layout_alignParentRight="true"
-             android:text="3"
+            android:layout_marginLeft="50dp"
+            android:layout_marginRight="25dp"
+            android:text="3"
             android:textColor="#ffffff"
-            android:background="@drawable/btn_circle"
-            />
-
-
-    </RelativeLayout>
+            android:background="@drawable/btn_circle_grave" />
+    </LinearLayout>
 
     <TextView
         android:id="@+id/tv_instruction"
         android:layout_width="wrap_content"
-        android:layout_height="50dp"
+        android:layout_height="wrap_content"
         android:text="@string/instruction"
         android:gravity="fill_vertical"
         android:textColor="#000000"
-        android:textSize="20dp"
+        android:textSize="15dp"
+        android:paddingBottom="5dp"
+        app:layout_constraintTop_toBottomOf="@+id/lay_step"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/lay_step"
-        app:layout_constraintBottom_toTopOf="@id/et_website"
-        />
+        app:layout_constraintRight_toRightOf="parent"/>
+
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:id="@+id/lay_step1"
+        android:padding="10dp"
+        app:layout_constraintTop_toBottomOf="@id/tv_instruction"
+        app:layout_constraintBottom_toBottomOf="parent">
 
         <EditText
             android:id="@+id/et_website"
             android:layout_width="match_parent"
             android:layout_height="50dp"
-            app:layout_constraintTop_toBottomOf="@id/tv_instruction"
+            android:paddingTop="10dp"
             android:background="@drawable/setbar_bg_blue"
-            />
+            android:text="http://jwc.scnu.edu.cn"
+            app:layout_constraintTop_toTopOf="parent" />
+        <Button
+            android:id="@+id/btn_open"
+            style="@android:style/Widget.Holo.Light.Button.Inset"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
+            android:layout_marginTop="35dp"
+            android:background="@drawable/setbar_bg_blue"
+            android:text="@string/open"
+            android:textColor="#03A9F4"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/et_website"/>
+    </android.support.constraint.ConstraintLayout>
 
-
-    <Button
-        android:id="@+id/bt_open"
-        style="@android:style/Widget.Holo.Light.Button.Inset"
+    <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="30dp"
-        android:layout_marginRight="30dp"
-        android:layout_marginTop="35dp"
-        android:background="@drawable/setbar_bg_blue"
-        android:text="@string/open"
-        android:textColor="#03A9F4"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/et_website" />
+        android:layout_height="0dp"
+        android:id="@+id/lay_step2"
+        android:visibility="invisible"
+        app:layout_constraintTop_toBottomOf="@+id/tv_instruction"
+        app:layout_constraintBottom_toBottomOf="parent">
 
+        <WebView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/web">
+        </WebView>
+    </android.support.constraint.ConstraintLayout>
 
 </android.support.constraint.ConstraintLayout>
