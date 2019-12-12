@@ -1,6 +1,5 @@
 package com.example.course;
 
-//todo 继续把各种内容拆分
 public class Course {
     //星期几:周一到周日
     private int day;
@@ -10,6 +9,7 @@ public class Course {
     private int clsCount;
     //课程名
     private String clsName;
+    private String[] clss;
 
     public int getClsNum() {
         return clsNum;
@@ -27,8 +27,25 @@ public class Course {
         this.clsName = clsName;
     }
 
-    public int getDay() {
-        return day;
+    public String getDay() {
+        switch(day){
+            case 1:
+                return "一";
+            case 2:
+                return "二";
+            case 3:
+                return "三";
+            case 4:
+                return "四";
+            case 5:
+                return "五";
+            case 6:
+                return "六";
+            case 7:
+                return "日";
+            default:
+                return null;
+        }
     }
 
     public void setDay(int day) {
@@ -43,13 +60,30 @@ public class Course {
         this.clsCount = clsCount;
     }
 
-    /*@Override
+    public void setClss(){
+        clss = clsName.split(" ");
+    }
+
+    public String getTeacherName() {
+        return clss.length < 5 ? clss[clss.length - 1] : clss[clss.length - 2];
+    }
+
+    public String getLocation(){
+        return clss.length < 5 ? "" : clss[clss.length - 1];
+    }
+
+    public String getName(){
+        return clss[0];
+    }
+
+    @Override
     public String toString() {
-        return "\nStuClass{" +
-                "clsCount=" + clsCount +
-                ", day=" + day +
-                ", clsNum=" + clsNum +
-                ", clsName='" + clsName + '\'' +
-                "}\n";
-    }*/
+        return getName() + "-"
+                + getTeacherName() + "-"
+                + getDay() + "-"
+                + getClsNum() + "-"
+                + (getClsNum() + getClsCount() - 1) + "-"
+                + getLocation() + "\n";
+        //课程名，老师，星期，开始、结束，课室
+    }
 }

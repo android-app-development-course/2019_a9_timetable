@@ -1,15 +1,15 @@
 package com.example.myapplication;
 
 import android.Manifest;
+import android.content.ContentValues;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.support.constraint.ConstraintLayout;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
-import android.util.DisplayMetrics;
-import android.util.TypedValue;
 import android.view.View;
 import android.webkit.JavascriptInterface;
 import android.webkit.JsResult;
@@ -21,15 +21,13 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import com.example.course.Course;
-
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
-
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 public class AutoAddClass extends AppCompatActivity implements View.OnClickListener{
@@ -38,7 +36,9 @@ public class AutoAddClass extends AppCompatActivity implements View.OnClickListe
     private EditText website;
     private WebView web;
     private TextView tv_instruction;
-    public String addr = "", html;
+    public String addr = "";
+    public List<Course> html;
+    private MyHelper myHelper;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -55,10 +55,19 @@ public class AutoAddClass extends AppCompatActivity implements View.OnClickListe
         step2 = (ConstraintLayout) findViewById(R.id.lay_step2);
         website = (EditText) findViewById(R.id.et_website);
         web = (WebView) findViewById(R.id.web);
+        myHelper=new MyHelper(this);
 
         web.getSettings().setJavaScriptEnabled(true);
         web.addJavascriptInterface(new InJavaScriptLocalObj(), "local_obj");
-        web.setWebViewClient(new WebViewClient());
+        web.setWebViewClient(new WebViewClient(){
+            @Override
+            public void onLoadResource(WebView view, String url){
+                web.loadUrl("javascript:window.local_obj.showSource('<head>'+" +
+                        "document.getElementsByTagName('iframe')[0]" +
+                        ".contentWindow.document.body.innerHTML+'</head>');");
+                super.onLoadResource(view, url);
+            }
+        });
         web.setWebChromeClient(new WebChromeClient() {
             @Override
             public boolean onJsAlert(WebView view, String url, String message, JsResult result)
@@ -76,21 +85,23 @@ public class AutoAddClass extends AppCompatActivity implements View.OnClickListe
         webSettings.setBuiltInZoomControls(true); //设置内置的缩放控件。若为false，则该WebView不可缩放
         webSettings.setDisplayZoomControls(false); //隐藏原生的缩放控件
     }
+
     final class InJavaScriptLocalObj{
         @JavascriptInterface
         public void showSource(String content){
-            html = content;
+            html = process(content);
+            //addClass(process(content));
         }
     }   //JS脚本class
     @Override
     public void onClick(View v){
         switch(v.getId()){
             case R.id.btn_save:
-                //todo 获取课表数据，处理，将整理后的课表返回上一个activity
                 web.loadUrl("javascript:window.local_obj.showSource('<head>'+" +
                         "document.getElementsByTagName('iframe')[0]" +
                         ".contentWindow.document.body.innerHTML+'</head>');");
-                process(html);
+                addClass(html);
+                startActivity(new Intent(AutoAddClass.this, MainActivity.class));
                 break;
             case R.id.btn_open:
                 if(!website.getText().toString().isEmpty()) {
@@ -148,8 +159,7 @@ public class AutoAddClass extends AppCompatActivity implements View.OnClickListe
         }
     }   //获取权限，访问网页
 
-    public static String process(String data){
-        //todo 总之先将要用到的东西摆在这里
+    private static List<Course> process(String data){
         List<Course> courses = new ArrayList<>();
         Document doc = Jsoup.parse(data);
         //首先获取Table
@@ -170,18 +180,59 @@ public class AutoAddClass extends AppCompatActivity implements View.OnClickListe
                 //如果数值为空则不计算。
                 if (!str.isEmpty()){
                     //解析文本数据
-                    //str =parsePersonalCourse(str);
                     Course course = new Course();
-                    course.setClsName(str);
                     course.setDay(j+1);
-                    if(!td.attr("rowspan").isEmpty())
-                        course.setClsCount(Integer.valueOf(td.attr("rowspan")));
-                    else course.setClsCount(1);
                     course.setClsNum(i+1);
+                    course.setClsName(str);
+                    if(!td.attr("rowspan").isEmpty()) {
+                        course.setClsCount(Integer.valueOf(td.attr("rowspan")));
+                    } else{
+                        Iterator iter = courses.iterator();
+                        while(iter.hasNext()){
+                            Course temp = (Course) iter.next();
+                            if(temp.getName().equals(course.getClsName().split(" ")[0])
+                                    && temp.getDay().equals(course.getDay())
+                                    && temp.getClsNum() == course.getClsNum()-2) {
+                                course.setClsNum(temp.getClsNum());
+                                course.setClsName(temp.getClsName());
+                                iter.remove();
+                            }
+                        }
+                        course.setClsCount(3);
+                    }
+                    course.setClss();
                     courses.add(course);
                 }
             }
         }
-        return courses.toString();
-    }
+        return courses;
+    }   //处理获得的html数据
+
+    private void addClass(List<Course> classes){
+        Course cla;
+        Iterator iterator = classes.iterator();
+        SQLiteDatabase db = myHelper.getWritableDatabase();
+        while(iterator.hasNext()){
+            ContentValues values = new ContentValues();
+            cla = (Course) iterator.next();
+            values.put("project", cla.getName());
+            values.put("teacher", cla.getTeacherName());
+            values.put("week", "周" + cla.getDay());
+            values.put("start", cla.getClsNum());
+            values.put("ends", (cla.getClsNum()+cla.getClsCount()-1));
+            values.put("location", cla.getLocation());
+            db.insert("information", null, values);
+        }   //课程名，老师，星期，开始、结束，课室
+        db.close();
+        /*String str = "";
+        while(iterator.hasNext()){
+            cla = (Course) iterator.next();
+            str += cla.getClsName()+",";
+            str += cla.getTeacherName()+",";
+            str += cla.getDay()+",";
+            str += cla.getClsNum()+",";
+            str += cla.getLocation()+"\n";
+        }
+        Toast.makeText(this, classes.size()+"\n"+str, Toast.LENGTH_LONG).show();*/
+    }   //添加课程到数据库中
 }
