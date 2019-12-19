@@ -47,7 +47,7 @@ MyHelper myHelper;
                 week.setText(week.getText().toString()+"1-20周");
                 if(!cursor.getString(4).equals(cursor.getString(5)))
                 class_time.setText(class_time.getText().toString()+cursor.getString(3)+" "+
-                        cursor.getString(4)+"-"+cursor.getString(5)+"节");
+                        cursor.getString(4)+"-"+cursor.getString(5));
                 else
                     class_time.setText(class_time.getText().toString()+cursor.getString(3)+" 第"+
                             cursor.getString(4)+"节");

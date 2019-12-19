@@ -72,7 +72,7 @@ public class ClassMessage extends Fragment implements View.OnClickListener{
         long selectTime = calendar.getTimeInMillis();
 // 如果当前时间大于设置的时间，那么就从第二天的设定时间开始
         if(systemTime > selectTime) {
-            Toast.makeText(context,"设置的时间小于当前时间", Toast.LENGTH_SHORT).show();
+            //Toast.makeText(context,"设置的时间小于当前时间", Toast.LENGTH_SHORT).show();
             calendar.add(Calendar.DAY_OF_MONTH, 1);
             selectTime = calendar.getTimeInMillis();
         }
@@ -91,7 +91,6 @@ public class ClassMessage extends Fragment implements View.OnClickListener{
       //  manager.setRepeating(AlarmManager.ELAPSED_REALTIME_WAKEUP,
 
         //       firstTime,60,sender);
-        Toast.makeText(context,"开启课程提醒功能",Toast.LENGTH_SHORT).show();
     }
 
     public  void update(){
@@ -168,6 +167,17 @@ autoAdd.setOnClickListener(this);
         relativeLayout=(RelativeLayout)view.findViewById(R.id.week1);
         init();
         update();
+        SQLiteDatabase db = myHelper.getReadableDatabase();
+        Cursor cursor = db.query("classclock", null, null, null, null, null, null);
+        if (cursor.getCount() == 0) num = 0;
+        else {
+            cursor.moveToNext();
+            num = new Integer(cursor.getString(1));
+        }
+        cursor.close();
+        db.close();
+        if(num%2!=0)
+            Notice();
         return view;
     }
     public static void init(){
@@ -213,11 +223,11 @@ autoAdd.setOnClickListener(this);
 
                 break;
             case R.id.btn_scan:
-                Enabled=true;
+
                 boolean isEnabled = NotificationManagerCompat.from(context).areNotificationsEnabled();
                 if (!isEnabled) {
-                    Enabled=false;
-                 AlertDialog alertDialog = new AlertDialog.Builder(context)
+                    Toast.makeText(context,"打开通知功能失败，请先打开权限",Toast.LENGTH_SHORT).show();
+                    AlertDialog alertDialog = new AlertDialog.Builder(context)
                             .setTitle("提示")
                             .setMessage("请在“通知”中打开通知权限")
                             .setNegativeButton("取消", new DialogInterface.OnClickListener() {
@@ -254,6 +264,7 @@ autoAdd.setOnClickListener(this);
                                         intent.setAction("android.settings.APPLICATION_DETAILS_SETTINGS");
                                         intent.setData(Uri.fromParts("package", context.getPackageName(), null));
                                     }
+                                    getActivity().finish();
                                     startActivity(intent);
                                 }
 
@@ -283,6 +294,7 @@ autoAdd.setOnClickListener(this);
                                     @Override
                                     public void onClick(DialogInterface dialog, int which) {
                                         Notice();
+                                        Toast.makeText(context,"开启课程提醒功能",Toast.LENGTH_SHORT).show();
                                         SQLiteDatabase db1=myHelper.getWritableDatabase();
                                         ContentValues values=new ContentValues();
                                         values.put("num",num+"");

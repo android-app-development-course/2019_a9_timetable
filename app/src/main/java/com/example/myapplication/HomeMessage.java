@@ -30,6 +30,7 @@ import java.util.TimeZone;
 
 public class HomeMessage extends Fragment implements View.OnClickListener{
     static int id=-1;
+    static boolean homework=false;
     Button btn_add;
    static  Context context;
     Button btn_scan;
@@ -62,7 +63,7 @@ public class HomeMessage extends Fragment implements View.OnClickListener{
         long selectTime = calendar.getTimeInMillis();
 // 如果当前时间大于设置的时间，那么就从第二天的设定时间开始
         if(systemTime > selectTime) {
-            Toast.makeText(context,"设置的时间小于当前时间", Toast.LENGTH_SHORT).show();
+          //  Toast.makeText(context,"设置的时间小于当前时间", Toast.LENGTH_SHORT).show();
             calendar.add(Calendar.DAY_OF_MONTH, 1);
             selectTime = calendar.getTimeInMillis();
         }
@@ -79,7 +80,6 @@ public class HomeMessage extends Fragment implements View.OnClickListener{
         } else {
             manager.setRepeating(AlarmManager.ELAPSED_REALTIME_WAKEUP, firstTime, 1000*60*60*24, sender);
         }
-        Toast.makeText(context,"开启作业提醒功能",Toast.LENGTH_SHORT).show();
     }
 
     public void update(){
@@ -117,6 +117,17 @@ public class HomeMessage extends Fragment implements View.OnClickListener{
         //粘贴的代码
         myHelper=new MyHelper(context);
         update();
+        SQLiteDatabase db = myHelper.getReadableDatabase();
+        Cursor cursor = db.query("homeworkclock", null, null, null, null, null, null);
+        if (cursor.getCount() == 0) num = 0;
+        else {
+            cursor.moveToNext();
+            num = new Integer(cursor.getString(1));
+        }
+        cursor.close();
+        db.close();
+        if(num%2!=0)
+            Notice();
         return view;
     }
     @Override
@@ -126,7 +137,7 @@ public class HomeMessage extends Fragment implements View.OnClickListener{
                 boolean isEnabled = NotificationManagerCompat.from(context).areNotificationsEnabled();
                 if (!isEnabled) {
                     //未打开通知
-
+                 Toast.makeText(context,"打开通知功能失败，请先打开权限",Toast.LENGTH_SHORT).show();
                     AlertDialog alertDialog = new AlertDialog.Builder(context)
 
                             .setTitle("提示")
@@ -188,7 +199,7 @@ public class HomeMessage extends Fragment implements View.OnClickListener{
                                         intent.setData(Uri.fromParts("package", context.getPackageName(), null));
 
                                     }
-
+                                    getActivity().finish();
                                     startActivity(intent);
 
 
@@ -226,6 +237,8 @@ public class HomeMessage extends Fragment implements View.OnClickListener{
                                     @Override
                                     public void onClick(DialogInterface dialog, int which) {
                                         Notice();
+                                        Toast.makeText(context,"开启作业提醒功能",Toast.LENGTH_SHORT).show();
+
                                         SQLiteDatabase db1=myHelper.getWritableDatabase();
                                         ContentValues values=new ContentValues();
                                         values.put("num",num+"");

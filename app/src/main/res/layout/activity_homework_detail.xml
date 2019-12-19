@@ -4,8 +4,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/p6"
     tools:context=".HomeworkDetail">
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:src="@drawable/p8"
+        android:scaleType="fitXY"
+        android:tint="#75ffffff"
+        />
 <LinearLayout
     android:id="@+id/maincontent"
     android:layout_width="match_parent"
@@ -64,7 +70,8 @@
             android:id="@+id/edit_homework"
             android:padding="15dp"
             android:text="编辑"
-            android:textColor="#97ffff"
+            android:textColor="#000000"
+            android:textStyle="bold"
             android:background="#00000000"
             android:textSize="17dp"
             android:layout_width="0dp"

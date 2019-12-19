@@ -11,6 +11,7 @@ import android.view.KeyEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 public class AddHomework extends AppCompatActivity implements View.OnClickListener, select_deadlinetime.MyDialogFragment_Listener {
 Button btn_return;
@@ -22,6 +23,10 @@ EditText content;
 MyHelper myHelper;
 String deadlinetime[];
 public void add(){
+    if(deadline.getText().toString().equals("")) {
+        Toast.makeText(this,"添加失败，请选择截止时间",Toast.LENGTH_SHORT).show();
+        return;
+    }
     SQLiteDatabase db=myHelper.getWritableDatabase();
     ContentValues values=new ContentValues();
     values.put("project",classname.getText().toString());
@@ -44,6 +49,7 @@ HomeworkDetail.edit=false;
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.add_homework);
+        HomeMessage.homework=true;
         myHelper=new MyHelper(this);
         content=(EditText)findViewById(R.id.content);
         deadline=(Button)findViewById(R.id.deadline);
@@ -141,7 +147,7 @@ HomeworkDetail.edit=false;
     }
     @Override
     public void getDataFrom_DialogFragment(String selectnum) {
-
+if(!selectnum.equals("请选择截止时间"))
         deadline.setText(selectnum);
         // Log.d("Tag", "DialogFragment回传的数据为：" + data01 + " " + data02 + " " + data03);
     }

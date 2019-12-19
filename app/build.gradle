@@ -18,6 +18,33 @@ android {
         }
     }
 }
+buildscript {
+
+    repositories {
+        //添加1
+        maven { url 'http://maven.aliyun.com/nexus/content/groups/public/' }
+        maven { url "https://jitpack.io" }
+        //添加2
+        google()
+        //添加3
+        jcenter()
+        mavenCentral()
+    }
+}
+
+allprojects {
+    repositories {
+        //添加4
+        maven { url 'http://maven.aliyun.com/nexus/content/groups/public/' }
+        maven { url "https://jitpack.io" }
+        maven { url 'http://developer.huawei.com/repo' }
+        //添加5
+        google()
+        //添加6
+        jcenter()
+        mavenCentral()
+    }
+}
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])

@@ -10,7 +10,7 @@
     <ImageView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:src="@drawable/p7"
+        android:src="@drawable/p2"
         android:scaleType="fitXY"
         />
     <!--粘贴的代码-->

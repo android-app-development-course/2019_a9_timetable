@@ -19,6 +19,7 @@ static boolean edit=false;
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_homework_detail);
+        HomeMessage.homework=true;
         edit=true;
         edit_homework=(Button)findViewById(R.id.edit_homework);
         btn_scan=(Button)findViewById(R.id.btn_scan);

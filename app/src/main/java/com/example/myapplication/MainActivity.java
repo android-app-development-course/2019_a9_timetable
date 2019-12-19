@@ -111,10 +111,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         if(cursor.getCount()==0)return;
         int num=1;
         while(cursor.moveToNext()){
-
             int start=new Integer(cursor.getString(4));
             int ends=new Integer(cursor.getString(5));
-
             int week1=-1;
             for(int i=0;i<week.length;++i) {
                 if(week[i].equals(cursor.getString(3))){
@@ -194,7 +192,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         mTextMessage = findViewById(R.id.message);
         navView.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
         mExplosionField = ExplosionField.attach2Window(this);
+        if(!HomeMessage.homework)
         navView.setSelectedItemId(R.id.navigation_home);
+        else
+            navView.setSelectedItemId(R.id.navigation_dashboard);
+        HomeMessage.homework=false;
+
 
 //        ClassMessage classMessage=new ClassMessage();
 //        FragmentManager fragmentManager = getSupportFragmentManager();
@@ -315,7 +318,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                                         intent.setData(Uri.fromParts("package", MainActivity.this.getPackageName(), null));
 
                                     }
-
+finish();
                                     startActivity(intent);
 
 

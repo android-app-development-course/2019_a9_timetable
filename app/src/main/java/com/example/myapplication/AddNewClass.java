@@ -12,6 +12,7 @@ import android.view.KeyEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 public class AddNewClass extends AppCompatActivity implements View.OnClickListener, select_class_time.MyDialogFragment_Listener {
     private Button save,btnreturn;
@@ -54,6 +55,7 @@ public class AddNewClass extends AppCompatActivity implements View.OnClickListen
             ClassDetail.edit=false;
         }
         db.close();
+        //Toast.makeText(this,"sadads",Toast.LENGTH_SHORT).show();
     }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -140,8 +142,9 @@ public class AddNewClass extends AppCompatActivity implements View.OnClickListen
     }
     @Override
     public void getDataFrom_DialogFragment(String selectnum) {
-        class_time.setText(selectnum);
-        // Log.d("Tag", "DialogFragment回传的数据为：" + data01 + " " + data02 + " " + data03);
+          if(!selectnum.equals("请选择课程节数"))
+          class_time.setText(selectnum);
+           // Log.d("Tag", "DialogFragment回传的数据为：" + data01 + " " + data02 + " " + data03);
     }
     @Override
 

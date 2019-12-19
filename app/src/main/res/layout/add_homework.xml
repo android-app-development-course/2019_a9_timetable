@@ -9,8 +9,9 @@
     <ImageView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:src="@drawable/p4"
+        android:src="@drawable/p8"
         android:scaleType="fitXY"
+        android:tint="#75ffffff"
         />
     <LinearLayout
         android:id="@+id/lay_state"

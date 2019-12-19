@@ -98,6 +98,7 @@ public class select_deadlinetime extends DialogFragment implements NumberPicker.
         numberPicker2.setGravity(Gravity.CENTER);
         //设置滑动监听
         numberPicker2.setOnValueChangedListener(this);
+        time.setText(numberPicker1.getValue()+"-"+numberPicker2.getValue()+"-"+numberPicker3.getValue());
         return view;
     }
     @Override

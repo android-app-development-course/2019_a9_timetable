@@ -1,7 +1,9 @@
 package com.example.myapplication;
 
 import android.Manifest;
+import android.app.AlertDialog;
 import android.content.ContentValues;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.database.sqlite.SQLiteDatabase;
@@ -10,6 +12,9 @@ import android.support.constraint.ConstraintLayout;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
+import android.util.DisplayMetrics;
+import android.util.TypedValue;
+import android.view.KeyEvent;
 import android.view.View;
 import android.webkit.JavascriptInterface;
 import android.webkit.JsResult;
@@ -39,11 +44,20 @@ public class AutoAddClass extends AppCompatActivity implements View.OnClickListe
     public String addr = "";
     public List<Course> html;
     private MyHelper myHelper;
+    protected   int dp2px(int dpVal){
+        return (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP,dpVal,
+                getResources().getDisplayMetrics());
+    }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.auto_add_class);
+        DisplayMetrics dm = new DisplayMetrics();
+        getWindowManager().getDefaultDisplay().getMetrics(dm);		//屏幕宽度
+int width=dm.widthPixels;
+int t=dp2px(75);
         btn_two = (Button) findViewById(R.id.two);
+        btn_two.setX(width/2-t);
         btn_save = (Button) findViewById(R.id.btn_save);
         btn_return = (Button) findViewById(R.id.btn_return);
         btn_go = (Button) findViewById(R.id.btn_open);
@@ -101,6 +115,7 @@ public class AutoAddClass extends AppCompatActivity implements View.OnClickListe
                         "document.getElementsByTagName('iframe')[0]" +
                         ".contentWindow.document.body.innerHTML+'</head>');");
                 addClass(html);
+                finish();
                 startActivity(new Intent(AutoAddClass.this, MainActivity.class));
                 break;
             case R.id.btn_open:
@@ -235,4 +250,37 @@ public class AutoAddClass extends AppCompatActivity implements View.OnClickListe
         }
         Toast.makeText(this, classes.size()+"\n"+str, Toast.LENGTH_LONG).show();*/
     }   //添加课程到数据库中
+    @Override
+
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+
+        switch (keyCode) {
+            case KeyEvent.KEYCODE_BACK:
+                AlertDialog.Builder builder = new AlertDialog.Builder(this);
+                builder.setIcon(R.drawable.exit)
+                        .setTitle("提示！")
+                        .setMessage("确认放弃自动导入课程信息吗？")
+                        .setPositiveButton("确定", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                              //  ClassDetail.edit=false;
+                                Intent intent=new Intent(AutoAddClass.this,MainActivity.class);
+                                finish();
+                                startActivity(intent);
+                                overridePendingTransition(R.anim.zoomin, R.anim.zoomout);
+
+                            }
+                        })
+                        .setNegativeButton("取消", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                            }
+                        })
+                        .show();
+                break;
+        }
+        return false;
+
+    }
 }
+

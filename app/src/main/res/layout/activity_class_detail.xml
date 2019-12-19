@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/p6"
+    android:background="@drawable/p2"
     tools:context=".HomeworkDetail">
     <LinearLayout
         android:id="@+id/maincontent"
@@ -65,8 +65,9 @@
                 android:id="@+id/edit_class"
                 android:padding="14dp"
                 android:text="编辑"
-                android:textColor="#97ffff"
-                android:background="#00000000"
+                android:textColor="#000000"
+                android:textStyle="bold"
+                 android:background="#00000000"
                 android:textSize="14dp"
                 android:layout_width="0dp"
                 android:layout_weight="1"
