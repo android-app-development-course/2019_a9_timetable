@@ -91,7 +91,8 @@ if(!week.equals(cursor.getString(3)))continue;
 else{
     //Toast.makeText(context,(starthour[new Integer(cursor.getString(4))-1]*60+startminute[new Integer(cursor.getString(4))-1])-(hour*60+minute)+"",Toast.LENGTH_SHORT).show();
 if(((starthour[new Integer(cursor.getString(4))-1]*60+startminute[new Integer(cursor.getString(4))-1])-(hour*60+minute)>=0)&&(starthour[new Integer(cursor.getString(4))-1]*60+startminute[new Integer(cursor.getString(4))-1])-(hour*60+minute)<=51) {
-    message = cursor.getString(1) + "\n" + cursor.getString(6);break;
+    message = cursor.getString(1) + "\n" + cursor.getString(6)+" \n上课时间:"+
+            starthour[new Integer(cursor.getString(4))-1]+":"+startminute[new Integer(cursor.getString(4))-1];break;
 }
 }
         }

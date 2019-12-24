@@ -223,22 +223,24 @@ int t=dp2px(75);
         return courses;
     }   //处理获得的html数据
 
-    private void addClass(List<Course> classes){
+    private void addClass(List<Course> classes) {
         Course cla;
-        Iterator iterator = classes.iterator();
-        SQLiteDatabase db = myHelper.getWritableDatabase();
-        while(iterator.hasNext()){
-            ContentValues values = new ContentValues();
-            cla = (Course) iterator.next();
-            values.put("project", cla.getName());
-            values.put("teacher", cla.getTeacherName());
-            values.put("week", "周" + cla.getDay());
-            values.put("start", cla.getClsNum());
-            values.put("ends", (cla.getClsNum()+cla.getClsCount()-1));
-            values.put("location", cla.getLocation());
-            db.insert("information", null, values);
-        }   //课程名，老师，星期，开始、结束，课室
-        db.close();
+        Iterator iterator;
+        if (classes.size()==0) return;
+            iterator = classes.iterator();
+            SQLiteDatabase db = myHelper.getWritableDatabase();
+            while (iterator.hasNext()) {
+                ContentValues values = new ContentValues();
+                cla = (Course) iterator.next();
+                values.put("project", cla.getName());
+                values.put("teacher", cla.getTeacherName());
+                values.put("week", "周" + cla.getDay());
+                values.put("start", cla.getClsNum());
+                values.put("ends", (cla.getClsNum() + cla.getClsCount() - 1));
+                values.put("location", cla.getLocation());
+                db.insert("information", null, values);
+            }   //课程名，老师，星期，开始、结束，课室
+            db.close();
         /*String str = "";
         while(iterator.hasNext()){
             cla = (Course) iterator.next();
@@ -249,7 +251,8 @@ int t=dp2px(75);
             str += cla.getLocation()+"\n";
         }
         Toast.makeText(this, classes.size()+"\n"+str, Toast.LENGTH_LONG).show();*/
-    }   //添加课程到数据库中
+        }
+    //添加课程到数据库中
     @Override
 
     public boolean onKeyDown(int keyCode, KeyEvent event) {

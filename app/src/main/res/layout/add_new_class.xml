@@ -113,8 +113,10 @@
             android:text="@string/week"
             ></TextView>
 
-        <EditText
+        <Button
             android:id="@+id/week"
+            android:text="1-20"
+            android:gravity="left|center_vertical"
             android:layout_width="match_parent"
             android:layout_height="60dp"
             android:background="#00000000"

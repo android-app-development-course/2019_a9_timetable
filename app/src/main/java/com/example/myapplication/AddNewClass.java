@@ -14,9 +14,9 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-public class AddNewClass extends AppCompatActivity implements View.OnClickListener, select_class_time.MyDialogFragment_Listener {
+public class AddNewClass extends AppCompatActivity implements View.OnClickListener, select_class_time.MyDialogFragment_Listener,select_weeknum.MyDialogFragment_Listener1 {
     private Button save,btnreturn;
-    Button time;
+    Button week;
     private EditText classname;
     private EditText classroom;
     private Button class_time;
@@ -62,6 +62,8 @@ public class AddNewClass extends AppCompatActivity implements View.OnClickListen
         super.onCreate(savedInstanceState);
         setContentView(R.layout.add_new_class);
         button=null;
+        week=(Button)findViewById(R.id.week);
+        week.setOnClickListener(this);
         classname=(EditText)findViewById(R.id.classname);
         classroom=(EditText)findViewById(R.id.classroom);
         class_time=(Button)findViewById(R.id.class_time);
@@ -133,6 +135,10 @@ public class AddNewClass extends AppCompatActivity implements View.OnClickListen
                 startActivity(intent);
                 overridePendingTransition(R.anim.zoomin,R.anim.zoomout);
                 break;
+            case R.id.week:
+                select_weeknum selectweeknum=new select_weeknum();
+                selectweeknum.show(getFragmentManager(),"1");
+                break;
             case R.id.class_time:
                 select_class_time editNameDialogFragment=new select_class_time();
                 editNameDialogFragment.show(getFragmentManager(),"1");
@@ -176,6 +182,13 @@ public class AddNewClass extends AppCompatActivity implements View.OnClickListen
                 break;
         }
         return false;
+
+    }
+
+    @Override
+    public void getDataFrom_DialogFragment1(String selectnum) {
+        if(selectnum.indexOf("请选择上课周数")==-1)
+        week.setText(selectnum);
 
     }
 }
